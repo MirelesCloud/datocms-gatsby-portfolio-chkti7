@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
+import logo from './logo.png'
 
 import '../styles/index.sass'
 
@@ -15,6 +16,7 @@ const TemplateWrapper = ({ children, data }) => (
       <div className="sidebar">
         <h6 className="sidebar__title">
           <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
+          <img src={logo} style={{maxWidth:"200px", height:"auto"}} />
         </h6>
         <div
           className="sidebar__intro"
