@@ -52,7 +52,7 @@ const TemplateWrapper = ({ children, data }) => (
             <Link to="/" data-js="toggleSidebar" />
           </div>
           <div className="mobile-header__logo">
-            <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
+            
           </div>
         </div>
       </div>
