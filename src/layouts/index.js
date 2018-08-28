@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
-import logo from './logo.png'
+
 
 import '../styles/index.sass'
 
