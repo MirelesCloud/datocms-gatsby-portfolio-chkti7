@@ -16,7 +16,7 @@ const TemplateWrapper = ({ children, data }) => (
       <div className="sidebar">
         <h6 className="sidebar__title">
           <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
-          <img src={logo} style={{maxWidth:"200px", height:"auto"}} />
+
         </h6>
         <div
           className="sidebar__intro"
@@ -29,7 +29,7 @@ const TemplateWrapper = ({ children, data }) => (
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/about">Contact</Link>
           </li>
         </ul>
         <p className="sidebar__social">
