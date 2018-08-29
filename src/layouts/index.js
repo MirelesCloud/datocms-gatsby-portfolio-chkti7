@@ -14,10 +14,8 @@ const TemplateWrapper = ({ children, data }) => (
     />
     <div className="container__sidebar">
       <div className="sidebar">
-        <h6 className="sidebar__title">
-
-
-        </h6>
+        <h6 className="sidebar__title">{data.datoCmsHome.logoImage}</h6>
+        <h4>{data.datoCmsHome.test}</h4>
         <div
           className="sidebar__intro"
           dangerouslySetInnerHTML={{
@@ -52,7 +50,7 @@ const TemplateWrapper = ({ children, data }) => (
             <Link to="/" data-js="toggleSidebar" />
           </div>
           <div className="mobile-header__logo">
-            <Link to="/">{data.datoCmsHome.logo}</Link>
+            <Link to="/">{data.datoCmsHome.logoImage}</Link>
           </div>
         </div>
       </div>
