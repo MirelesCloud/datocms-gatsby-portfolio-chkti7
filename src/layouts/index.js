@@ -14,8 +14,8 @@ const TemplateWrapper = ({ children, data }) => (
     />
     <div className="container__sidebar">
       <div className="sidebar">
-        <h6 className="sidebar__title">{data.datoCmsHome.logoImage}</h6>
-        
+        <div className="sidebar__title">{data.datoCmsHome.logo}</div>
+
         <div
           className="sidebar__intro"
           dangerouslySetInnerHTML={{
@@ -85,6 +85,7 @@ export const query = graphql`
         }
       }
       copyright
+
     }
     allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
       edges {
