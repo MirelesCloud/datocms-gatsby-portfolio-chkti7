@@ -89,7 +89,7 @@ export const query = graphql`
         }
       }
       logoImage {
-        sizes(maxWidth: 300, imgixParams: { fm: "jpg", auto: "compress" }) {
+        sizes(maxWidth: 300, imgixParams: { fm: "png", auto: "compress" }) {
           ...GatsbyDatoCmsSizes
         }
       }
