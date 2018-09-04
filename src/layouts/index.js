@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
+import Img from 'gatsby-image'
 
 
 import '../styles/index.sass'
@@ -14,7 +15,10 @@ const TemplateWrapper = ({ children, data }) => (
     />
     <div className="container__sidebar">
       <div className="sidebar">
-        <div className="sidebar__title">{data.datoCmsHome.logo}</div>
+        <div className="sidebar__title">
+          <Img sizes={data.datoCmsHome.logoImage.sizes}/>
+
+        </div>
 
         <div
           className="sidebar__intro"
@@ -27,7 +31,7 @@ const TemplateWrapper = ({ children, data }) => (
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/about">Contact</Link>
           </li>
         </ul>
         <p className="sidebar__social">
@@ -49,8 +53,8 @@ const TemplateWrapper = ({ children, data }) => (
           <div className="mobile-header__menu">
             <Link to="/" data-js="toggleSidebar" />
           </div>
-          <div className="mobile-header__logo">
-            <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
+          <div className="mobile-header__logo" >
+            <Link to="/"><Img sizes={data.datoCmsHome.logoImage.sizes} /></Link>
           </div>
         </div>
       </div>
@@ -84,8 +88,12 @@ export const query = graphql`
           html
         }
       }
+      logoImage {
+        sizes(maxWidth: 300, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsSizes
+        }
+      }
       copyright
-
     }
     allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
       edges {
