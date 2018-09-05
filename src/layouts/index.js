@@ -31,7 +31,7 @@ const TemplateWrapper = ({ children, data }) => (
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">Contact</Link>
+            <Link to="/location">Location</Link>
           </li>
         </ul>
         <p className="sidebar__social">
@@ -46,6 +46,8 @@ const TemplateWrapper = ({ children, data }) => (
         </p>
         <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
       </div>
+      {data.datoCmsHome.map.longitude}
+      {data.datoCmsHome.map.latitude}
     </div>
     <div className="container__body">
       <div className="container__mobile-header">
@@ -94,6 +96,10 @@ export const query = graphql`
         }
       }
       copyright
+      map {
+        latitude
+        longitude
+      }
     }
     allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
       edges {
