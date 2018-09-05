@@ -46,8 +46,7 @@ const TemplateWrapper = ({ children, data }) => (
         </p>
         <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
       </div>
-      {data.datoCmsHome.map.longitude}
-      {data.datoCmsHome.map.latitude}
+      
     </div>
     <div className="container__body">
       <div className="container__mobile-header">

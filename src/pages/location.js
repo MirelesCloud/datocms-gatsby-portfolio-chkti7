@@ -2,14 +2,16 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
+import GoogleMapReact from 'google-map-react'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
-const StoreLocation = withScriptjs(withGoogleMap((props) =>{
+const StoreLocation = withScriptjs(withGoogleMap(() => {
   return (
       <GoogleMap
         defaultZoom={14}
         center={ { lat:  33.8726562, lng: -118.37192090000002 } }
       >
+        <Marker position={ { lat:  33.8726562, lng: -118.37192090000002 } }/>
 
       </GoogleMap>
     );
