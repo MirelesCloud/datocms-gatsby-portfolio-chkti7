@@ -3,9 +3,21 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
-
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 import '../styles/index.sass'
+
+const StoreLocation = withScriptjs(withGoogleMap(() => {
+  return (
+      <GoogleMap
+        defaultZoom={14}
+        center={ { lat:  33.8726562, lng: -118.37192090000002 } }
+      >
+        <Marker position={ { lat:  33.8726562, lng: -118.37192090000002 } }/>
+      </GoogleMap>
+    );
+  }
+))
 
 const TemplateWrapper = ({ children, data }) => (
   <div className="container">
@@ -46,7 +58,7 @@ const TemplateWrapper = ({ children, data }) => (
         </p>
         <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
       </div>
-      
+
     </div>
     <div className="container__body">
       <div className="container__mobile-header">
@@ -60,6 +72,24 @@ const TemplateWrapper = ({ children, data }) => (
         </div>
       </div>
       {children()}
+      <article className="sheet">
+
+        <div className="sheet_inner">
+          <h1 className="sheet__title">{data.datoCmsLocationMap.title}</h1>
+          <p className="sheet__lead">{data.datoCmsLocationMap.subText}</p>
+
+        </div>
+        <div className="sheet__body">
+          <StoreLocation
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDhq6DDmH0nylqeC3vifVoSyWrUmRFj_7U&v=3.exp&libraries=geometry,drawing,places`}
+    				loadingElement={<div style={{ height: `100%` }} />}
+    				containerElement={<div style={{ height: `600px`, width: `600px` }} />}
+    				mapElement={<div style={{ height: `100%` }} />}
+    			/>
+
+        </div>
+      </article>
+
     </div>
   </div>
 )
@@ -95,10 +125,7 @@ export const query = graphql`
         }
       }
       copyright
-      map {
-        latitude
-        longitude
-      }
+
     }
     allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
       edges {
@@ -106,6 +133,14 @@ export const query = graphql`
           profileType
           url
         }
+      }
+    }
+    datoCmsLocationMap {
+      title
+      subText
+      storeLocation {
+        latitude
+        longitude
       }
     }
   }
