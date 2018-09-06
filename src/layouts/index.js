@@ -43,7 +43,7 @@ const TemplateWrapper = ({ children, data }) => (
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/location">Location</Link>
+            <Link to="/About">Location</Link>
           </li>
         </ul>
         <p className="sidebar__social">
@@ -72,7 +72,7 @@ const TemplateWrapper = ({ children, data }) => (
         </div>
       </div>
       {children()}
-      <article className="sheet">
+      <div className="sheet__map">
 
         <div className="sheet_inner">
           <h1 className="sheet__title">{data.datoCmsLocationMap.title}</h1>
@@ -82,13 +82,13 @@ const TemplateWrapper = ({ children, data }) => (
         <div className="sheet__body">
           <StoreLocation
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDhq6DDmH0nylqeC3vifVoSyWrUmRFj_7U&v=3.exp&libraries=geometry,drawing,places`}
-    				loadingElement={<div style={{ height: `100%` }} />}
-    				containerElement={<div style={{ height: `600px`, width: `600px` }} />}
+    				loadingElement={<div className="loading-element" />}
+    				containerElement={<div className="container-element" />}
     				mapElement={<div style={{ height: `100%` }} />}
     			/>
 
         </div>
-      </article>
+      </div>
 
     </div>
   </div>
