@@ -75,8 +75,12 @@ const TemplateWrapper = ({ children, data }) => (
       <div className="sheet__map">
 
         <div className="sheet_inner">
-          <h1 className="sheet__title">{data.datoCmsLocationMap.title}</h1>
-          <p className="sheet__lead">{data.datoCmsLocationMap.subText}</p>
+          <h3 className="sheet__title">{data.datoCmsLocationMap.title}</h3>
+          <p className="sheet__lead"
+            dangerouslySetInnerHTML={{
+              __html: data.datoCmsLocationMap.subTextNode.childMarkdownRemark.html,
+            }}
+          />
 
         </div>
         <div className="sheet__body">
@@ -137,7 +141,11 @@ export const query = graphql`
     }
     datoCmsLocationMap {
       title
-      subText
+      subTextNode {
+        childMarkdownRemark {
+          html
+        }
+      }
       storeLocation {
         latitude
         longitude
