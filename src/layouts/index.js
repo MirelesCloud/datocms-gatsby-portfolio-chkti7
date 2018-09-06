@@ -75,8 +75,8 @@ const TemplateWrapper = ({ children, data }) => (
       <div className="sheet__map">
 
         <div className="sheet_inner">
-          <div className="sheet__title">{data.datoCmsLocationMap.title}</div>
-          <div className="sheet__lead"
+          <div className="sheet__map__title">{data.datoCmsLocationMap.title}</div>
+          <div className="sheet__map__lead"
             dangerouslySetInnerHTML={{
               __html: data.datoCmsLocationMap.subTextNode.childMarkdownRemark.html,
             }}
