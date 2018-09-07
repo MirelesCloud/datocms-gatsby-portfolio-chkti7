@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
 import '../styles/index.sass'
 
@@ -18,6 +18,20 @@ const StoreLocation = withScriptjs(withGoogleMap(() => {
     );
   }
 ))
+
+const Store = ({data}) => (
+      <GoogleMap
+        defaultZoom={14}
+        center={{ lat: data.datoCmsLocationMap.storeLocation.latitude, lng: data.datoCmsLocationMap.storeLocation.longitude }}>
+        <Marker position={{ lat: data.datoCmsLocationMap.storeLocation.latitude, lng: data.datoCmsLocationMap.storeLocation.longitude }}/>
+      </GoogleMap>
+)
+
+
+
+
+
+const StoreMap = withScriptjs(withGoogleMap(Store))
 
 const TemplateWrapper = ({ children, data }) => (
   <div className="container">
@@ -76,11 +90,23 @@ const TemplateWrapper = ({ children, data }) => (
 
         <div className="sheet_inner">
           <div className="sheet__map__title">{data.datoCmsLocationMap.title}</div>
+          <p className="sidebar__social">
+            {data.allDatoCmsSocialProfile.edges.map(({ node: profile }) => (
+              <a
+                key={profile.profileType}
+                href={profile.url}
+                target="blank"
+                className={`social social--${profile.profileType.toLowerCase()}`}
+              />
+            ))}
+          </p>
+
           <div className="sheet__map__lead"
             dangerouslySetInnerHTML={{
               __html: data.datoCmsLocationMap.subTextNode.childMarkdownRemark.html,
             }}
           />
+
 
         </div>
         <div className="sheet__body">
