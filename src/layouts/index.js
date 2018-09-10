@@ -39,8 +39,9 @@ const TemplateWrapper = ({ children, data }) => (
       favicon={data.datoCmsSite.faviconMetaTags}
       seo={data.datoCmsHome.seoMetaTags}
     />
-    <div className="container__sidebar">
-      <div className="sidebar">
+    <div className="container__sidebar" >
+      <div className="sidebar" >
+
         <div className="sidebar__title">
           <Img sizes={data.datoCmsHome.logoImage.sizes}/>
 
@@ -106,7 +107,6 @@ const TemplateWrapper = ({ children, data }) => (
               __html: data.datoCmsLocationMap.subTextNode.childMarkdownRemark.html,
             }}
           />
-
 
         </div>
         <div className="sheet__body">
